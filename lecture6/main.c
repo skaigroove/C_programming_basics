@@ -206,21 +206,154 @@ int main()
 	//for (;;) // infinite loop
 	//	printf("I love you");
 	
-	// 6.11
-	// 콤마 연산자
+	//// 6.11
+	//// 콤마 연산자
 
-	for (int n = 1, nsqr = n * n; n < 10; n++, nsqr = n * n)
-		printf("%d %d\n", n, nsqr);
+	//for (int n = 1, nsqr = n * n; n < 10; n++, nsqr = n * n)
+	//	printf("%d %d\n", n, nsqr);
 
-	// Note that commas in printf() are not comma operators
-	// but separators
+	//// Note that commas in printf() are not comma operators
+	//// but separators
 
-	int i, j;
-	i = 1;
-	i++, j = i; // comma is a sequence point
-	printf("%d %d\n", i, j);
+	//int i, j;
+	//i = 1;
+	//i++, j = i; // comma is a sequence point
+	//printf("%d %d\n", i, j);
 
+	//int x, y, z;
+	//z = x = 1, y = 2;
+	//printf("x=%d,y=%d,z=%d\n", x, y, z);
+	//z = (x = 1), (y = 2);
+	//printf("x=%d,y=%d,z=%d\n", x, y, z);
+	//z = ((x = 1), (y = 2)); //comma 연산은 오른쪽에 있는것이 전체 expression의 값이 되므로 z=2 가 된다.
+	//printf("x=%d,y=%d,z=%d\n", x, y, z);
 
+	//// int my_money = 123, 456; //error
+	//int my_money = (123,456); //456
+	//printf("%d\n", my_money);
+
+	//// 6.12
+	//// 제논의 역설 시뮬레이션 예제
+
+	///*
+	//	Simulation of a Moving Object
+
+	//	- Speed = 1.0 m/s
+	//	- dt = 1.0 m/s
+	//	- Distance traveled during dt = Speed * dt
+	//	
+	//	- Step 1 : 1.0 m/s * 1.0 s = 1.0 m, dist = 1.0 m
+	//	- Step 2 : 1.0 m/s * 1.0 s = 1.0 m, dist = 1.0 m + 1.0 m = 2.0 m
+	//	- Step 3 : 1.0 m/s * 1.0 s = 1.0 m, dist = 2.0 m + 1.0 m = 3.0 m
+	//*/
+	
+	//const double speed = 1.0;
+	//const unsigned repeat_max = 10;
+
+	//double dt = 1.0; // delta time 변동 시간 
+	//double time = 0.0;	// Elapsed time
+	//double dist = 0.0;	// Distance
+
+	//for (unsigned i = 0; i < repeat_max; ++i)
+	//{
+	//	dist += speed * dt;
+	//	time += dt;
+
+	//	printf("Elapsed time = %.10fs, Distance = %.10fm\n", time, dist);
+
+	//	// TODO : half time step
+	//}
+
+	//// Note : infinite geometric sereies
+
+	///*
+	//	Zeno's Paradox
+	//	- Step 1 : 1.0 * 1.0 = 1.0, 1.0
+	//	- Step 2 : 1.0 * 0.5 = 0.5, 1.0 +0.5 = 1.5
+	//	- Step 3 : 1.0 * 0.25 = 0.25, 1.5 +0.25 = 1.75
+
+	//*/
+
+	//const double speed = 1.0;
+	//const unsigned repeat_max = 10;
+
+	//double dt = 1.0; // delta time 변동 시간 
+	//double time = 0.0;	// Elapsed time
+	//double dist = 0.0;	// Distance
+
+	//for (unsigned i = 0; i < repeat_max; ++i)
+	//{	
+	//	
+	//	dist += speed * dt;
+	//	time += dt;
+	//	dt = dt * 0.5 ; // /2.0 보다 *0.5 를 쓰는게 계산이 빨라서 일반적이다
+
+	//	printf("Elapsed time = %.10fs, Distance = %.10fm\n", time, dist);
+
+	//	// TODO : half time step
+	//}
+
+	// 6.13
+	// 탈출조건 루프 do while
+	//
+	//int a = 0 ;
+	//const int password = 8809;
+
+	////printf("Enter secret code : ");
+	////scanf("%d", &a);
+
+	////while (a != password) {
+	////	printf("Enter secret code : ");
+	////	scanf("%d", &a);
+	////}
+
+	//do 
+	//{
+	//	printf("Enter secret code : ");
+	//	scanf("%d", &a);
+	//} 
+	//while (a != password);
+
+	////printf("Good!");
+	//
+	//// 6.15
+	//// 중첩된 루프들
+
+	//int num_lines;
+	//char start ,finish ;
+
+	//scanf("%d %c %c",&num_lines, &start, &finish);
+
+	//for (int i = 1; i <= num_lines; i++) {
+	//	for (char j = start; j <= finish; j++) {
+	//		printf("%c ",j);
+	//	}
+	//	printf("\n");
+	//}
+
+	//// 6.16
+	//// 배열과 런타임 에러
+
+	//int my_numbers[5]; // 0부터 4번째 까지의 공간 5개를 할당해준다
+
+	//my_numbers[0] = 1;
+	//my_numbers[1] = 3;
+	//my_numbers[2] = 4;
+	//my_numbers[3] = 2;
+	//my_numbers[4] = 1024;
+
+	//// scanf("%d", &my_numbers[0]);
+	//scanf("%d", my_numbers); // same
+
+	//printf("%d\n", my_numbers[0]);
+	//printf("%d\n", my_numbers[1]);
+	//printf("%d\n", my_numbers[2]);
+	//printf("%d\n", my_numbers[3]);
+	//printf("%d\n", my_numbers[4]);
+
+	///* Runtime Error */
+
+	//my_numbers[5] = 123; // out of bound (6번째 공간)
 
 	return 0;
 }
